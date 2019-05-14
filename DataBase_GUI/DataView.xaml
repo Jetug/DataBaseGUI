@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="DataBase_GUI.DataView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DataBase_GUI"
+             mc:Ignorable="d" Height="516" Width="877">
+    <Grid Margin="10,0,10.333,10">
+        <Button x:Name="VillageButton" Content="Посёлки" Margin="181,10,0,0" VerticalAlignment="Top" Width="149" Height="45" HorizontalAlignment="Left" Click="VillageButton_Click"/>
+        <Button x:Name="HouseButton" Content="Дома" Margin="346,10,0,0" VerticalAlignment="Top" Width="149" Height="45" HorizontalAlignment="Left" Click="HouseButton_Click"/>
+        <Button x:Name="DevButton" Content="Девелоперы" Margin="510,10,0,0" VerticalAlignment="Top" Width="149" Height="45" HorizontalAlignment="Left" Click="DevButton_Click"/>
+        <ContentControl x:Name="DataBaseInfo" Content="" HorizontalAlignment="Left" Margin="0,73,0,0" VerticalAlignment="Top" Height="433" Width="857"/>
+
+    </Grid>
+</UserControl>
