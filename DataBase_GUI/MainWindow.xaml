@@ -11,15 +11,15 @@
             <ColumnDefinition Width="59*"/>
             <ColumnDefinition Width="330*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="inputBase_Button" 
-                Content="Ввод базы данных" 
+        <Button x:Name="MainPage_Button" 
+                Content="Главная страница" 
                 HorizontalAlignment="Left" 
                 Margin="25,37,0,0"
                 VerticalAlignment="Top"
                 Width="131" Height="41"
-                Click="InputBase_Button_Click"/>
+                Click="MainPage_Button_Click"/>
         <Button x:Name="outBase_Button" 
-                Content="Вывод базы данных" 
+                Content="База данных" 
                 HorizontalAlignment="Left" 
                 Margin="25,97,0,0" 
                 VerticalAlignment="Top" 
@@ -32,6 +32,8 @@
                 VerticalAlignment="Top"
                 Width="131" Height="41"
                 Click="FileSelection_Button_Click"/>
-        <ContentPresenter x:Name="Main_Presenter" Margin="10.333,10,10.667,9.333" Grid.Column="1" />
+        <ContentPresenter 
+            x:Name="Main_Presenter"
+            Margin="10.333,10,10.667,9.333" Grid.Column="1" />
     </Grid>
 </Window>

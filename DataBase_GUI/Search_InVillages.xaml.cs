@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace DataBase_GUI
 {
     /// <summary>
-    /// Логика взаимодействия для DataTabs.xaml
+    /// Логика взаимодействия для Search_InVillages.xaml
     /// </summary>
-    public partial class DataTabs : UserControl
+    public partial class Search_InVillages : UserControl
     {
-        public DataTabs()
+        public Search_InVillages()
         {
             InitializeComponent();
-            //Tables table = new Tables();
-
-            //villTable.dataGrid.ItemsSource = table.villages;
-            //houseTable.dataGrid.ItemsSource = table.houses;
-            //devTable.dataGrid.ItemsSource = table.developers;
         }
     }
 }

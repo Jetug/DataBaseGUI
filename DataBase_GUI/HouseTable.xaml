@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DataBase_GUI"
-             mc:Ignorable="d" d:DesignWidth="800" Height="450">
-    <Grid Margin="0,0,0,10">
+             mc:Ignorable="d" d:DesignWidth="800" Height="400">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -16,8 +16,14 @@
         <DataGrid x:Name="dataGrid"
                   HorizontalAlignment="Left" VerticalAlignment="Top"
                   Height="370"  Width="480" 
-                  Margin="1,0,0,0" Grid.Column="1">
+                  Margin="1,0,0,0" Grid.Column="1"
+                  CanUserAddRows="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
+                <DataGridTextColumn Header="Название посёлка" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Номер" Binding="{Binding Num}"/>
+                <DataGridTextColumn Header="Площадь " Binding="{Binding Area}"/>
+                <DataGridTextColumn Header="Количество этажей" Binding="{Binding Floor}"/>
+                <DataGridTextColumn Header="Тип дома" Binding="{Binding Type}"/>
             </DataGrid.Columns>
 
 
@@ -27,14 +33,30 @@
         <TextBox x:Name="areaTextBox" HorizontalAlignment="Left" Height="24" Margin="137,186,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="floorTextBox" HorizontalAlignment="Left" Height="24" Margin="137,236,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="typeTextBox" HorizontalAlignment="Left" Height="24" Margin="137,284,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="AddButton" Content="Добавить" HorizontalAlignment="Left" Margin="56,351,0,0" VerticalAlignment="Top" Width="76" Height="20"/>
-        <Button x:Name="SaveButton" Content="Сохранить" HorizontalAlignment="Left" Margin="159,351,0,0" VerticalAlignment="Top" Width="76" Height="20"/>
-        <Label Content="Введите информацию о домах" HorizontalAlignment="Left" Margin="56,10,0,0" VerticalAlignment="Top" Width="180" Height="26" Background="White"/>
-        <Label x:Name="nameLabel" Content="Название посёлка" HorizontalAlignment="Left" Margin="16,84,0,0" VerticalAlignment="Top" Width="116" Height="26" Background="White"/>
-        <Label x:Name="numLabel" Content="Номер" HorizontalAlignment="Left" Margin="16,134,0,0" VerticalAlignment="Top" Width="116" Height="26" Background="White"/>
-        <Label x:Name="areaLabel" Content="Площадь" HorizontalAlignment="Left" Margin="16,184,0,0" VerticalAlignment="Top" Width="116" Height="26" Background="White"/>
-        <Label x:Name="floorLabel" Content="Количество этажей" HorizontalAlignment="Left" Margin="16,234,0,0" VerticalAlignment="Top" Width="116" Height="26" Background="White"/>
-        <Label x:Name="typeLabel" Content="Тип дома" HorizontalAlignment="Left" Margin="16,282,0,0" VerticalAlignment="Top" Width="116" Height="26" Background="White"/>
+        <Button 
+            x:Name="AddButton" Content="Добавить" HorizontalAlignment="Left" 
+            Margin="100,334,0,0" VerticalAlignment="Top"
+            Width="120" Height="38" Click="AddButton_Click" Background="#FFDDDDDD"/>
+        <Button 
+            x:Name="SaveButton" Content="Сохранить" HorizontalAlignment="Left"
+            Margin="2,370,0,-3" VerticalAlignment="Top" 
+            Width="160" Height="33"
+            Click="SaveButton_Click" Grid.Column="1"/>
+        <Button 
+            x:Name="searchButton" Content="Поиск" HorizontalAlignment="Left"
+            Margin="162,370,0,-3"
+            Width="160"
+            Grid.Column="1" Height="33" VerticalAlignment="Top" />
+        <Button 
+            x:Name="deleteButton" Content="Удалить" HorizontalAlignment="Left" 
+            Margin="322,370,-2,-3" VerticalAlignment="Top" 
+            Width="160" Height="33" Grid.Column="1"/>
+        <Label Content="Введите информацию о домах" HorizontalAlignment="Left" Margin="56,10,0,0" VerticalAlignment="Top" Width="180" Height="26" Background="{x:Null}"/>
+        <Label x:Name="nameLabel" Content="Название посёлка" HorizontalAlignment="Left" Margin="16,84,0,0" VerticalAlignment="Top" Width="116" Height="26" Background="{x:Null}"/>
+        <Label x:Name="numLabel" Content="Номер" HorizontalAlignment="Left" Margin="16,134,0,0" VerticalAlignment="Top" Width="116" Height="26" Background="{x:Null}"/>
+        <Label x:Name="areaLabel" Content="Площадь" HorizontalAlignment="Left" Margin="16,184,0,0" VerticalAlignment="Top" Width="116" Height="26" Background="{x:Null}"/>
+        <Label x:Name="floorLabel" Content="Количество этажей" HorizontalAlignment="Left" Margin="16,234,0,0" VerticalAlignment="Top" Width="116" Height="26" Background="{x:Null}"/>
+        <Label x:Name="typeLabel" Content="Тип дома" HorizontalAlignment="Left" Margin="16,282,0,0" VerticalAlignment="Top" Width="116" Height="26" Background="{x:Null}"/>
 
     </Grid>
 </UserControl>

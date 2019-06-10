@@ -12,14 +12,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BaseOutPut;
+using System.Media;
+using System.Threading;
+using DataBaseLogic;
 
 namespace DataBase_GUI
 {
-    class EmptyException: ArgumentException
-    {
-        public new string Message = "Была введена пустая строка";
-    }
+    
 
     /// <summary>
     /// Логика взаимодействия для DataTable.xaml
@@ -29,61 +28,92 @@ namespace DataBase_GUI
         public VillageTable()
         {
             InitializeComponent();
-            //dataGrid.ItemsSource = null;
-            dataGrid.ItemsSource = table.villages;
+            dataGrid.ItemsSource = FileXML.villages;
+            devComboBox.ItemsSource = file.GetDevNames();
         }
 
-        private Tables table = new Tables();
+        private FileXML file = new FileXML();
         private bool needToSave = true;
-
-        //private List<Village> villages = new List<Village>();
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            Village vill = new Village("","",0,0);
+            Village vill = new Village();
             try
             {
-                if ((nameTextBox.Text == "") || (devTextBox.Text == ""))
+                if ((nameTextBox.Text == "") || (devComboBox.Text == ""))
                 {
                     throw new EmptyException();
                 }
                 vill.name = nameTextBox.Text;
-                vill.dev = devTextBox.Text;
+                vill.dev = devComboBox.Text;
                 vill.area = float.Parse(areaTextBox.Text);
                 vill.people = uint.Parse(peopleTextBox.Text);
+
+                nameTextBox.Clear();
+                devComboBox.SelectedIndex = -1;
+                areaTextBox.Clear();
+                peopleTextBox.Clear();
+
+                FileXML.villages.Add(vill);
+                dataGrid.ItemsSource = null;
+                dataGrid.ItemsSource = FileXML.villages;
             }
             catch (OverflowException)
             {
+                PlaySound("Windows Ding.wav");
                 MessageBox.Show("Было введено слишком малое или слишком большое значение", "Ошибка!");
             }
             catch (FormatException exc)
             {
+                PlaySound("Windows Ding.wav");
                 MessageBox.Show(exc.Message, "Ошибка!");
             }
             catch (EmptyException exc)
             {
+                PlaySound("Windows Ding.wav");
                 MessageBox.Show(exc.Message, "Ошибка!");
             }
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message, "Непредвидимая ошибка!");
             }
-            table.villages.Add(vill);
-            dataGrid.ItemsSource = null;
-            dataGrid.ItemsSource = table.villages;
-
-            nameTextBox.Clear();
-            devTextBox.Clear();
-            areaTextBox.Clear();
-            peopleTextBox.Clear();
         }
+
+        //private void SetColumns()
+        //{
+        //    dataGrid.Columns[0].Header = "Посёлок";
+        //    dataGrid.Columns[1].Header = "Девелопер";
+        //    dataGrid.Columns[2].Header = "Площадь";
+        //    dataGrid.Columns[3].Header = "Население";
+        //}
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Cursor = Cursors.Wait;
+            Cursor = Cursors.Wait;
             needToSave = false;
-            table.SaveAll();
-            this.Cursor = Cursors.Arrow;
+            file.SaveAll();
+            Cursor = Cursors.Arrow;
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window searchBox = new Window();
+            Search_InVillages search = new Search_InVillages();
+            searchBox.Content = search;
+            searchBox.Show();
+        }
+
+        public void PlaySound(string soundName)
+        {
+            try
+            {
+                SoundPlayer player = new SoundPlayer($"C:/Windows/Media/{soundName}");
+                player.Play();
+            }
+            catch
+            {
+
+            }
         }
     }
 }

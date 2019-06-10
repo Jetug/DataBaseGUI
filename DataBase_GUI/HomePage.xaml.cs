@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace DataBase_GUI
 {
     /// <summary>
-    /// Логика взаимодействия для DataTabs.xaml
+    /// Логика взаимодействия для HomePage.xaml
     /// </summary>
-    public partial class DataTabs : UserControl
+    public partial class HomePage : UserControl
     {
-        public DataTabs()
+        public HomePage()
         {
             InitializeComponent();
-            //Tables table = new Tables();
-
-            //villTable.dataGrid.ItemsSource = table.villages;
-            //houseTable.dataGrid.ItemsSource = table.houses;
-            //devTable.dataGrid.ItemsSource = table.developers;
         }
     }
 }

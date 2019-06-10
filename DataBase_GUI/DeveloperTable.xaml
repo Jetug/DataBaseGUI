@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DataBase_GUI"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="0,0,0,10">
+             d:DesignHeight="400" d:DesignWidth="800">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -17,11 +17,13 @@
         <DataGrid x:Name="dataGrid"
                   HorizontalAlignment="Left"  VerticalAlignment="Top"
                   Height="370" Width="480" 
-                  Margin="1,0,0,0" Grid.Column="1">
+                  Margin="1,0,0,0" Grid.Column="1"
+                  CanUserAddRows="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Годовой доход" Binding="{Binding Inc}"/>
+                <DataGridTextColumn Header="Адрес" Binding="{Binding Addr}"/>
             </DataGrid.Columns>
-
-
         </DataGrid>
         <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Height="24" 
                  Margin="137,85,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
@@ -29,17 +31,31 @@
                  Margin="137,136,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="addrTextBox" HorizontalAlignment="Left" Height="24" 
                  Margin="137,186,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="AddButton" Content="Добавить" HorizontalAlignment="Left" 
-                Margin="56,351,0,0" VerticalAlignment="Top" Width="76" Height="20"/>
-        <Button x:Name="SaveButton" Content="Сохранить" HorizontalAlignment="Left"
-                Margin="159,351,0,0" VerticalAlignment="Top" Width="76" Height="20"/>
+        <Button 
+            x:Name="AddButton" Content="Добавить" HorizontalAlignment="Left" 
+            Margin="100,334,0,0" VerticalAlignment="Top"
+            Width="120" Height="38" Click="AddButton_Click" Background="#FFDDDDDD"/>
+        <Button 
+            x:Name="SaveButton" Content="Сохранить" HorizontalAlignment="Left"
+            Margin="2,370,0,-3" VerticalAlignment="Top" 
+            Width="160" Height="33"
+            Click="SaveButton_Click" Grid.Column="1"/>
+        <Button 
+            x:Name="searchButton" Content="Поиск" HorizontalAlignment="Left"
+            Margin="162,370,0,-3" VerticalAlignment="Top"
+            Width="160" Height="33"
+            Grid.Column="1"/>
+        <Button 
+            x:Name="deleteButton" Content="Удалить" HorizontalAlignment="Left" 
+            Margin="322,370,-2,-3" VerticalAlignment="Top" 
+            Width="160" Height="33" Grid.Column="1"/>
         <Label Content="Введите информацию о девклоперах" HorizontalAlignment="Left" 
-               Margin="46,10,0,0" VerticalAlignment="Top" Width="218" Height="26" Background="White"/>
+               Margin="46,10,0,0" VerticalAlignment="Top" Width="218" Height="26" Background="{x:Null}"/>
         <Label x:Name="nameLabel" Content="Название" HorizontalAlignment="Left" 
-               Margin="16,84,0,0" VerticalAlignment="Top" Width="94" Height="26" Background="White"/>
+               Margin="16,84,0,0" VerticalAlignment="Top" Width="94" Height="26" Background="{x:Null}"/>
         <Label x:Name="incLabel" Content="Годовой доход" HorizontalAlignment="Left"
-               Margin="16,134,0,0" VerticalAlignment="Top" Width="94" Height="26" Background="White"/>
+               Margin="16,134,0,0" VerticalAlignment="Top" Width="94" Height="26" Background="{x:Null}"/>
         <Label x:Name="addrLabel" Content="Адрес" HorizontalAlignment="Left" 
-               Margin="16,184,0,0" VerticalAlignment="Top" Width="94" Height="26" Background="White"/>
+               Margin="16,184,0,0" VerticalAlignment="Top" Width="94" Height="26" Background="{x:Null}"/>
     </Grid>
 </UserControl>

@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DataBase_GUI"
-             mc:Ignorable="d" d:DesignWidth="800" Height="450">
-    <Grid Margin="0,0,0,10">
+             mc:Ignorable="d" d:DesignWidth="800" Height="400">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -17,25 +17,46 @@
             x:Name="dataGrid"
             HorizontalAlignment="Left" VerticalAlignment="Top"
             Height="370"  Width="480"
-            Margin="2,0,0,0" Grid.Column="1">
+            Margin="2,0,-2,0" Grid.Column="1" 
+            CanUserAddRows="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Девелопер" Binding="{Binding Dev}"/>
+                <DataGridTextColumn Header="Площадь " Binding="{Binding Area}"/>
+                <DataGridTextColumn Header="Население" Binding="{Binding People}"/>
             </DataGrid.Columns>
-
-
         </DataGrid>
         <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Height="24" 
-                 Margin="137,85,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="devTextBox" HorizontalAlignment="Left" Height="24" 
-                 Margin="137,136,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                 Margin="137,85,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" 
+                 Width="120"/>
+        <ComboBox x:Name="devComboBox" HorizontalAlignment="Left"
+                  VerticalAlignment="Top" Margin="137,134,0,0" 
+                  Width="120" Background="White" BorderBrush="White" Foreground="Black" Height="26">
+        </ComboBox>
         <TextBox x:Name="areaTextBox" HorizontalAlignment="Left" Height="24" 
-                 Margin="137,186,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                 Margin="137,186,0,0" TextWrapping="Wrap" Text="" 
+                 VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="peopleTextBox" HorizontalAlignment="Left" Height="24" 
-                 Margin="137,236,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="AddButton" Content="Добавить" HorizontalAlignment="Left" 
-                Margin="56,351,0,0" VerticalAlignment="Top" Width="76" Height="20" Click="AddButton_Click" Background="#FFDDDDDD"/>
-        <Button x:Name="SaveButton" Content="Сохранить" HorizontalAlignment="Left"
-                Margin="159,351,0,0" VerticalAlignment="Top" Width="76" Height="20"
-                Click="SaveButton_Click"/>
+                 Margin="137,236,0,0" TextWrapping="Wrap" Text=""
+                 VerticalAlignment="Top" Width="120"/>
+        <Button 
+            x:Name="AddButton" Content="Добавить" HorizontalAlignment="Left" 
+            Margin="100,334,0,0" VerticalAlignment="Top"
+            Width="120" Height="38" Click="AddButton_Click" Background="#FFDDDDDD"/>
+        <Button 
+            x:Name="SaveButton" Content="Сохранить" HorizontalAlignment="Left"
+            Margin="2,370,0,-3" VerticalAlignment="Top" 
+            Width="160" Height="33"
+            Click="SaveButton_Click" Grid.Column="1"/>
+        <Button 
+            x:Name="searchButton" Content="Поиск" HorizontalAlignment="Left"
+            Margin="162,370,0,-3" VerticalAlignment="Top"
+            Width="160" Height="33"
+            Grid.Column="1" Click="SearchButton_Click" />
+        <Button 
+            x:Name="deleteButton" Content="Удалить" HorizontalAlignment="Left" 
+            Margin="322,370,-2,-3" VerticalAlignment="Top" 
+            Width="160" Height="33" Grid.Column="1"/>
         <Label Content="Введите информацию о посёлке" HorizontalAlignment="Left"
                Margin="50,10,0,0" VerticalAlignment="Top" Width="192" Height="26" Background="{x:Null}"/>
         <Label x:Name="nameLabel" Content="Название" HorizontalAlignment="Left" 
@@ -46,6 +67,5 @@
                Margin="16,184,0,0" VerticalAlignment="Top" Width="94" Background="{x:Null}"/>
         <Label x:Name="peopleLabel" Content="Население" HorizontalAlignment="Left" 
                Margin="16,234,0,0" VerticalAlignment="Top" Width="94" Background="{x:Null}"/>
-
     </Grid>
 </UserControl>
